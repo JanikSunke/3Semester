@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascript/bootstrap.bundle.js"></script>
+  </head>
+  <body>
+    <ul class="nav nav-tabs">
+      <li class="nav-item" {{#if active.home}}active{{/if}}>
+        <form action="/" method="post">
+          <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+          <input type="submit" value="Home">
+        </form>
+      </li>
+
+      {{#if user}}
+        {{#if user.id}}
+        {{else}}
+          <li class="nav-item" {{#if active.signIn}}active{{/if}}>
+            <form action="/signin" method="post">
+              <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+              <input type="submit" value="Sign In">
+            </form>
+          </li>
+        {{/if}}
+      {{else}}
+        <li class="nav-item" {{#if active.signIn}}active{{/if}}>
+          <form action="/signin" method="post">
+            <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+            <input type="submit" value="Sign In">
+          </form>
+        </li>
+      {{/if}}
+      
+      {{#if user}}
+        {{#if user.id}}
+          <li class="nav-item">
+            <form action="/" method="post">
+              <input type="submit" value="Sign out">
+            </form>
+          </li>
+        {{/if}}
+      {{/if}}
+
+      <li class="nav-item" {{#if active.users}}active{{/if}}>
+        <form action="/profile" method="post">
+          <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+          <input type="submit" value="Profile">
+        </form>
+      </li>
+
+      <li class="nav-item" {{#if active.invoices}}active{{/if}}>
+        <form action="/invoices" method="post">
+          <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+          <input type="submit" value="Invoices">
+        </form>
+      </li>
+
+      <li class="nav-item" {{#if active.adminIndex}}active{{/if}}>
+        <form action="/admin/index" method="post">
+          <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+          <input type="submit" value="Admin index">
+        </form>
+      </li>
+
+      <li class="nav-item" {{#if active.adminCashflow}}active{{/if}}>
+        <form action="/admin/cashflow" method="post">
+          <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+          <input type="submit" value="Admin Cashflow">
+        </form>
+      </li>
+
+      <li class="nav-item" {{#if active.adminInvoices}}active{{/if}}>
+        <form action="/admin/invoices" method="post">
+          <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+          <input type="submit" value="Admin Invoices">
+        </form>
+      </li>
+      
+      <li class="nav-item" {{#if active.adminUsersProfile}}active{{/if}}>
+        <form action="/admin/users/profile" method="post">
+          <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+          <input type="submit" value="Admin Users Profile">
+        </form>
+      </li>
+    </ul>
+
+    <div style="padding-top: 50px;"></div>
+
+    {{{body}}}
+    
+    <div style="padding-top: 50px;"></div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<div class="text-center">
+  <h1>{{title}} page</h1><br>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="card col-6">
+      <div>
+        <h1>General</h1>
+        <p>Balance: {{ cashflow.balance }}</p>
+        <p>Pending income: {{ cashflow.pendingIncome }}</p>
+        <p>LastMonthIncomeSum: {{ cashflow.lastMonthIncomeSum }}</p>
+      </div>
+      <div>
+        <h1>Subscriptions</h1>
+        <p>LastMonthIncomeSubscriptions: {{ cashflow.lastMonthIncomeSubscriptions }}</p>
+        <p>Subscriptions: {{ cashflow.expectedIncomeSubscriptions }}</p>
+      </div>
+      <div>
+        <h1>Ads</h1>
+        <p>LastMonthIncomeAdds: {{ cashflow.lastMonthIncomeAdds }}</p>
+      </div>
+    </div>
+  </div>
+</div>

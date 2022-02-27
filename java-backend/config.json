@@ -1,0 +1,20 @@
+{
+  "stripe_secret_key": "sk_test_51JoNcpEuxKCgxj5t7EkKho4w6aNJlh0ZHHuh8Q56I8DFtZsTH6DezWSL8UnX8ecE52fYudBgrKzlsM4lYfanGHAh00UkbmXiNX",
+  "mail_sender": "subscription-team@alexandernorup.com",
+  "mail_password": "nielsfaurskov",
+  "smtp_host": "smtp.simply.com",
+  "database_url": "hosting.alexandernorup.com",
+  "database_port": "5432",
+  "database_name": "subscription",
+  "database_username": "subscription",
+  "database_password": "nielsfaurskov",
+  "api_host": "http://127.0.0.1:5000",
+  "mail_host" : "http://127.0.0.1:5001",
+  "websocket_host" : "hosting.alexandernorup.com",
+  "websocket_port" : "4001",
+  "websocket_topic" : "subscription",
+  "user_port": "80",
+  "user_host": "stream.stud-srv.sdu.dk/service01",
+  "mock_host": "drive.alexandernorup.com/semesterprojekt",
+  "admin_user_id": "dbb2c974-66e2-4aca-8472-b81af79b044f"
+}

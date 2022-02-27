@@ -1,0 +1,2 @@
+docker run -p 5000:5000 --rm -d gitlab.sdu.dk:5050/semester-project-e2021/team-04/subscription:subscription
+docker run -p 5001:5001 --rm -d gitlab.sdu.dk:5050/semester-project-e2021/team-04/subscription:mail

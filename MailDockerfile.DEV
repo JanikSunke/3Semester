@@ -1,0 +1,14 @@
+FROM gitlab.sdu.dk:5050/semester-project-e2021/team-04/subscription/gradle:7.2.0-jdk17 AS builder
+COPY --chown=gradle:gradle java-backend ./
+RUN gradle build -x test
+
+
+FROM gitlab.sdu.dk:5050/semester-project-e2021/team-04/subscription/openjdk:17
+RUN mkdir app/
+WORKDIR /app/
+COPY --from=builder /home/gradle/build/libs/Mail*.jar /app/.
+COPY --from=builder /home/gradle/MailConfig.dev.json /app/.
+RUN mv MailConfig.dev.json config.json
+ENV PORT=5001
+EXPOSE 5001
+CMD [ "java","-jar","MailServiceMain-1.0.0.jar" ]

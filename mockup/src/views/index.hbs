@@ -1,0 +1,12 @@
+<div class="text-center">
+  <h1>Subscription Team {{title}}</h1><br>
+  {{#if user}}
+    {{#if user.id}}
+      <a href="/">Sign out</a>
+    {{else}}
+      <a href="/signin">Sign in</a>
+    {{/if}}
+  {{else}}
+    <a href="/signin">Sign in</a>
+  {{/if}}
+</div>

@@ -1,0 +1,171 @@
+<div class="text-center">
+  <h1>{{title}} page</h1><br>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="card col-6">
+      <h1>Profile</h1>
+      <p>User id: {{ user.id }}</p>
+      <p>Username: {{ user.username }}</p>
+      <p>Email: {{ user.email }}</p>
+      <br>
+
+      <h1>Subscription: {{ user.subscription.effectiveTier }}</h1>
+      <h2>Active subscriptions</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">NAME</th>
+              <th scope="col">REFERENCE</th>
+              <th scope="col">PRICE</th>
+              <th scope="col">RENEW</th>
+              <th scope="col">STATUS</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each user.subscription.subscriptions}}
+              <tr>
+                <td>{{ name }}</td>
+                <td>{{ id }}</td>
+                <td>{{ price }}{{ currency }}</td>
+                <td>{{ renewsAt }}</td>
+                <td>{{ status }}</td>
+                <td><form action="/profile" method="POST">
+                  <input type="text" name="subscriptionId" value="{{ id }}" style="display: none;">
+                  <input type="text" name="userId" value="{{ ../user.id }}" style="display: none;">
+                  <input type="submit" value="CANCEL">
+                </form></td>
+                <td><form action="/profile" method="POST">
+                  <input type="text" name="subscriptionId" value="{{ id }}" style="display: none;">
+                  <input type="text" name="userId" value="{{ ../user.id }}" style="display: none;">
+                  <input type="text" name="force" value="true" style="display: none;">
+                  <input type="submit" value="CANCEL NOW!">
+                </form></td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <form action="/invoices" method="post">
+        <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+        <input type="submit" value="View invoices">
+      </form>
+      <br>
+
+      <h2>Create new subscription</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">TIER</th>
+              <th scope="col">PRICE</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each subscriptionTiers}}
+              <tr>
+                <td>{{ name }}</td>
+                <td>{{ price }}{{ currency }}</td>
+                <td><form action="/profile" method="POST">
+                  <input type="text" name="subscriptionTier" value="{{ id }}" style="display: none;">
+                  <input type="text" name="userId" value="{{ ../user.id }}" style="display: none;">
+                  <input type="submit" value="CREATE">
+                </form></td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <h1>Payment methods</h1>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">TYPE</th>
+              <th scope="col">CARD</th>
+              <th scope="col">EXPIRE</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each user.paymentMethods}}
+              <tr>
+                <td>{{ cardType }}</td>
+                <td>**** **** **** {{ lastFourDigits }}</td>
+                <td>{{ expireMonth }}/{{ expireYear }}</td>
+                <td><form action="/profile" method="POST">
+                  <input type="text" name="paymentId" value="{{ paymentId }}" style="display: none;">
+                  <input type="text" name="userId" value="{{ ../user.id }}" style="display: none;">
+                  <input type="submit" value="REMOVE">
+                </form></td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card" style="padding: 5px; border: 2px solid black">
+        <form action="/profile" method="POST">
+          <input class="col-6" type="text" name="cardNumber" maxlength="16" placeholder="CARD NUMBER"><br>
+          <input class="col-1" type="text" name="expireMonth" maxlength="2" placeholder="MM">/
+          <input class="col-1" type="text" name="expireYear" maxlength="4" placeholder="YYYY">
+          <input class="col-1" type="text" name="cvc" maxlength="3" placeholder="CVC">
+          <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+          <input class="col-3" type="submit" value="ADD CARD">
+        </form>
+      </div>
+      <br>
+      <h1>Family</h1>
+      <h2>Family id: {{ user.family.familyId }}</h2>
+      <h2>Family is premium: {{ user.family.familyIsPremium }}</h2>
+      <h2>Members</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">NAME</th>
+              <th scope="col">EFFECTIVE TIER</th>
+              <th scope="col">ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each user.family.familyMembers}}
+              <tr>
+                <td>{{ name }}</td>
+                <td>{{ subscription }}</td>
+                <td>{{ userId }}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <form action="/profile" method="POST">
+        <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+        {{#if user.family.isInFamily}}
+          <input type="text" name="familyLeave" value="true" style="display: none;">
+          <input type="submit" value="LEAVE FAMILY">
+          </form>
+        {{else}}
+          <input type="text" name="familyCreate" value="true" style="display: none;">
+          <input type="submit" value="CREATE NEW FAMILY">
+          </form>
+
+          <form action="/profile" method="POST">
+            <input type="text" name="familyId" placeholder="FAMILY ID">
+            <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+            <input type="submit" value="JOIN FAMILY">
+          </form>
+        {{/if}}
+
+      <div style="padding-bottom: 10px;"></div>
+    </div>
+  </div>
+</div>

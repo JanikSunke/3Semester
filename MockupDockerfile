@@ -1,0 +1,11 @@
+FROM gitlab.sdu.dk:5050/semester-project-e2021/team-04/subscription/node:16-alpine
+
+WORKDIR /usr/app
+
+COPY ./mockup/package.json ./mockup/package-lock.json ./
+
+RUN npm i
+
+COPY ./mockup/src ./src
+
+CMD ["npm", "start"]

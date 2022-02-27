@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Music Player</title>
+    <script>
+        function songSwitcher(song) {
+            if (song == 'all_my_love') {
+                document.getElementById('audioController').src = "Music/all_my_love.mp3";
+            } else if (song == 'blinding_lights') {
+                document.getElementById('audioController').src = "Music/blinding_lights.mp3";
+            } else if (song == 'in_your_eyes') {
+                document.getElementById('audioController').src = "Music/in_your_eyes.mp3";
+            } else {
+                alert("Not a real song?")
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <style>
+        .btn {
+            width: 220px;
+            padding: 5px;
+        }
+    </style>
+
+    <h2>Streaming Service</h2>
+	<h3>Subscription Team Edition</h3>
+
+    <br>
+
+
+    <audio id="audioController" controls preload="auto"></audio>
+    <br>
+    <br>
+    <button type="button" onclick="songSwitcher('all_my_love') ; nameChanger()" class="btn btn-primary">All My
+        Love</button>
+    <br>
+    <br>
+    <button type="button" onclick="songSwitcher('blinding_lights')" class="btn btn-primary">Blinding Lights</button>
+    <br>
+    <br>
+    <button type="button" onclick="songSwitcher('in_your_eyes')" class="btn btn-primary">Robin Schulz - In Your
+        Eyes</button>
+    <br>
+    <br>
+
+</body>
+
+</html>

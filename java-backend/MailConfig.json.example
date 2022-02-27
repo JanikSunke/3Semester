@@ -1,0 +1,8 @@
+{
+  "mail_sender": "MAil_TO_SEND_FROM",
+  "mail_password": "MAIL_PASSWORD",
+  "smtp_host": "SMTP_HOST",
+  "api_host": "HOST",
+  "api_port": "PORT",
+  "admin_user_id" : "UUID"
+}

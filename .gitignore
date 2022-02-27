@@ -1,0 +1,47 @@
+.idea/
+## WOOOWAH?!?!? What is happening here??
+## Are you telling me that we're just exposing the config files with all the real informaiton in them?
+## Yes I am. I have my reasons:
+### 
+### 1. I want to ackknowlegde that you would never never never do this in real life/production/industrien. It is bad practice
+###    We should instead use some kind of secret manager. Maybe the built-in one for gitlab, and store the secrets there.
+### 
+### 2. We are required to have CI/CD build our project. They cannot do this without our conifg, and we have no way to give them
+###    our config files. And we cannot set any "secrets". This was not a problem in the beginning, but because they have to build it
+###    we really have no choice but to give in.
+### 
+## So I just wanted to make it clear: Yes! This is a bad idea. - but everyone is doing. And I'm at least giving an explanation
+## for why we're choosing to do something this stupid.
+## - Alexander Nørup, Team04
+#java-backend/MailConfig.json
+#java-backend/SubConfig.json
+#config.json
+#java-backend/config.json
+java-backend/bin
+
+### Java ###
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+java-backend/.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.pdf
+
+### Gradle ###
+java-backend/.gradle
+java-backend/build/

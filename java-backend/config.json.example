@@ -1,0 +1,18 @@
+{
+  "stripe_secret_key": "KEY_HERE"
+  "mail_sender": "MAIL_HERE",
+  "mail_password": "MAIL_PASSWORD_HERE"
+  "smtp_host": "SMTP_HOST_HERE"
+  "database_url": "DB_HOST",
+  "database_port": "DB_PORT",
+  "database_name": "DB_NAME",
+  "database_username": "DB_USERNAME",
+  "database_password": "DB_PASSWORD",
+  "api_host": "IP/HOST",
+  "api_port": "PORT",
+  "mail_host": "IP/HOST",
+  "mail_port" : "PORT",
+  "websocket_host" : "HOST",
+  "websocket_port" : "PORT",
+  "admin_user_id" : "UUID"
+}

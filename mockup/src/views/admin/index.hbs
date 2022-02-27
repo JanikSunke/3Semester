@@ -1,0 +1,14 @@
+<div class="text-center">
+  <h1>{{title}} page</h1>
+
+  <form action="/{{ pathPrefix }}/cashflow" method="post">
+    <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+    <input class="btn btn-lg btn-primary btn-block" type="submit" value="View cashflow">
+  </form>
+  <br>
+
+  <form action="/{{ pathPrefix }}/invoices" method="post">
+    <input type="text" name="userId" value="{{ user.id }}" style="display: none;">
+    <input class="btn btn-lg btn-primary btn-block" type="submit" value="View users">
+  </form>
+</div>

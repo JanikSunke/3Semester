@@ -1,0 +1,2210 @@
+{
+	"info": {
+		"_postman_id": "aebdea5f-c4aa-4231-9091-140a3b0e3f30",
+		"name": "TestSubscriptions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Rest Endpoints",
+			"item": [
+				{
+					"name": "GET /subscription/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.jsonBody();\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "x-test-db",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/subscription/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"subscription",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /invoice/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.jsonBody();\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "x-test-db",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/invoice/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"invoice",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /family/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.jsonBody();\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "x-test-db",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/family/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"family",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /payments/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.jsonBody();\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-user-id",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "x-test-db",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/payments/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"payments",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "1. Assert existing subscriptions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    const responseJson = pm.response.json();\r",
+							"    var map = {};\r",
+							"    pm.test('Response has subscriptions', () => {\r",
+							"        _.each(responseJson, (item) => {\r",
+							"            map[item.id] = true;\r",
+							"            map[item.price] = true;\r",
+							"        })\r",
+							"    })\r",
+							"    // If the JSON has the value it will be true\r",
+							"    pm.expect(map[7995]).to.be.true;\r",
+							"    pm.expect(map['STUDENT']).to.be.true;\r",
+							"    pm.expect(map[17995]).to.be.true;\r",
+							"    pm.expect(map['FAMILY']).to.be.true;\r",
+							"    pm.expect(map[9995]).to.be.true;\r",
+							"    pm.expect(map['PREMIUM']).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/subscription/list",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Delete all payments for user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"User has no payment methods\", function() {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.success).to.be.true;\r",
+							"        pm.expect(responseJson.message).to.be.oneOf([\"All payment methods deleted Successfully\",\"All payments deleted, user had no payments to delete\"])\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/payments/all",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"payments",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Cashflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.response.to.have.jsonBody();",
+							"    pm.collectionVariables.set(\"cashflow\", pm.response.json()[0].pendingIncome);",
+							"    pm.test(\"Expected output\", function() {",
+							"        pm.expect(pm.response.json()[0].pendingIncome).to.be.a(\"number\");",
+							"    });",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/cashflow/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cashflow",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Create subscription with error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Cant create subscription without payment source\", function () {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.error).to.be.true;\r",
+							"        pm.expect(responseJson.message).to.be.string;\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"subscription\": {{subscriptionPre}}\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/subscription/create",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. get payments methods",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"No payment methods\", function () {\r",
+							"        pm.expect(pm.response.json().length).to.be.eql(0);\r",
+							"    })\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/payments/get",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"payments",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Create payment method for test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.collectionVariables.set(\"paymentId\", pm.response.json().paymentId);\r",
+							"    pm.test(\"Create payment\", function() {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.success).to.be.true;\r",
+							"        pm.expect(responseJson.message).to.be.eql(\"payment created Successfully\");\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"cardNumber\": {{cardNumber}},\n   \"expireMonth\": {{expireMonth}},\n   \"expireYear\": {{expireYear}},\n   \"cvc\": {{cvc}},\n   \"method\": {{method}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/payments/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"payments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Create paymentMethod for test with invalid card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 406\", function () {\r",
+							"    pm.response.to.have.status(406);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Card is invalid\", function() {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.error).to.be.true;\r",
+							"        pm.expect(responseJson.message).to.be.eql(\"Not acceptable: Card is invalid\");\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"cardNumber\": {{cardNumber}},\n   \"expireMonth\": {{expireMonth}},\n   \"expireYear\": {{expireYearInvalid}},\n   \"cvc\": {{cvc}},\n   \"method\": {{method}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/payments/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"payments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Change payment method",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.response.to.have.jsonBody();",
+							"    pm.collectionVariables.set(\"paymentId\", pm.response.json().paymentId);",
+							"    pm.test(\"Change payment Method\", function() {",
+							"        const responseJson = pm.response.json();",
+							"        pm.expect(responseJson.success).to.be.true;",
+							"        pm.expect(responseJson.message).to.be.eql(\"payment updated Successfully\");",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"cardNumber\": {{cardNumber}},\n   \"expireMonth\": {{expireMonth}},\n   \"expireYear\": {{expireYearChanged}},\n   \"cvc\": {{cvc}},\n   \"method\": {{method}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/payments/edit/{{paymentId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"payments",
+						"edit",
+						"{{paymentId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9. Assert user payment is correct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    const jsonResponse = pm.response.json();\r",
+							"    pm.test(\"Check CardValues\", function () {\r",
+							"        pm.expect(jsonResponse.expireMonth == pm.collectionVariables.get(\"expireMonth\").slice(1, -1));\r",
+							"        pm.expect(jsonResponse.lastFourDigits == pm.collectionVariables.get(\"cardNumber\").substring(14,17));\r",
+							"        pm.expect(jsonResponse.expireYear == pm.collectionVariables.get(\"expireYear\").slice(1, -1));\r",
+							"    })\r",
+							"    pm.test(\"Only one paymentMethod\", function () {\r",
+							"        pm.expect(jsonResponse).to.be.length(1);\r",
+							"    })\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/payments/get",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"payments",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10. Create subscription for test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.collectionVariables.set(\"subscriptionId\", pm.response.json().subscriptionId);\r",
+							"    pm.test(\"Creating subscription\", function() {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.success).to.be.true;\r",
+							"        pm.expect(responseJson.message).to.be.eql(\"Subscription created Successfully\")\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subscription\": {{subscriptionPre}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/subscription/create",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11. get all invoices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"setTimeout(function(){}, 6000);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Invoice is created\", function () {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson[0].userId).have.to.be.eql(\"test\");\r",
+							"        pm.collectionVariables.set(\"invoiceId\", responseJson[0].id);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/invoice/list",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"invoice",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "12. assert latest invoice pdf",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.test(\"Invoice is readable(pdf)\", function () {\r",
+							"        pm.response.to.have.header(\"Content-Type\");\r",
+							"        pm.response.to.be.header(\"Content-Type\", \"application/pdf\")\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/invoice/{{invoiceId}}/view?user=test",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoiceId}}",
+						"view"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "test"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "13. assert latest invoice data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Invoice has correct data\", function () {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.userId).have.to.be.eql(\"test\");\r",
+							"        pm.expect(responseJson.totalPrice).have.to.be.eql(9995);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/invoice/{{invoiceId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"invoice",
+						"{{invoiceId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "14. Change subscription for test (Familiy)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.response.to.have.jsonBody();",
+							"    pm.test(\"Updating subscription\", function() {",
+							"        const responseJson = pm.response.json();",
+							"        pm.expect(responseJson.success).to.be.true;",
+							"        const subId = pm.collectionVariables.get(\"subscriptionId\");",
+							"        pm.expect(responseJson.message).to.be.eql(`Subscription ${subId} updated to tier FAMILY successfully!`);",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"subscription\": {{subscriptionFam}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/subscription/{{subscriptionId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"{{subscriptionId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "15. Assert subscription is correct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    const jsonResponse = pm.response.json();\r",
+							"\r",
+							"    pm.collectionVariables.set(\"subRenew\", jsonResponse.subscriptions[0].renewsAt);\r",
+							"    pm.test(\"Only one Subscription\", function () {\r",
+							"        pm.expect(jsonResponse.subscriptions).to.be.length(1);\r",
+							"    });\r",
+							"    pm.test(\"Subscription is correct\", function () {\r",
+							"        pm.expect(jsonResponse.subscriptions[0].tier).to.be.eql(pm.collectionVariables.get(\"subscriptionFam\").slice(1,-1));\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/subscription/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "16. Show subscription info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.response.to.have.jsonBody();",
+							"    const jsonResponse = pm.response.json();",
+							"    pm.test(\"Subscription is correct\", function () {",
+							"        pm.expect(jsonResponse.tier).to.be.eql(pm.collectionVariables.get(\"subscriptionFam\").slice(1,-1));",
+							"    })",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/subscription/{{subscriptionId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"{{subscriptionId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "17. Create and assert already subbed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 406\", function () {\r",
+							"    pm.response.to.have.status(406);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Creating subscriptions\", function() {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.error).to.be.true;\r",
+							"        pm.expect(responseJson.message).to.be.eql(\"Not acceptable: You already have a subscription. Cancel your current subscription.\");\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subscription\": {{subscriptionFam}}\r\n}"
+				},
+				"url": {
+					"raw": "{{URL}}/subscription/create",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "18. Create a family for user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Create family\", function () {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.success).to.be.true;\r",
+							"        pm.collectionVariables.set(\"familyId\", responseJson.createdFamilyId);\r",
+							"    })\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "18.1 Join family test1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test1",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/{{familyId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						"{{familyId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "18.2 Join family test2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test2",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/{{familyId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						"{{familyId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "18.3 Join family test3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test3",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/{{familyId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						"{{familyId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "18.4 Join family test4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test4",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/{{familyId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						"{{familyId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "18.5 Join family test5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test5",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/{{familyId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						"{{familyId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "19. Join Family (full)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Family is full\", function () {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.error).to.be.true;\r",
+							"        pm.expect(responseJson.message).to.be.eql(\"Bad request: Family is either full, or does not exist.\");\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/{{familyId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						"{{familyId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "20. Check user and user1 same family",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    const responseJson = pm.response.json();\r",
+							"    var map = {};\r",
+							"    pm.test('Family has test and test1', () => {\r",
+							"        _.each(responseJson.familyMembers, (item) => {\r",
+							"            map[item.userId] = true;\r",
+							"        });\r",
+							"        // If the JSON has the value it will be true\r",
+							"        pm.expect(map[\"test\"]).to.be.true;\r",
+							"        pm.expect(map[\"test1\"]).to.be.true;\r",
+							"    })\r",
+							"    pm.test(\"Family has 6 users\", function() {\r",
+							"        pm.expect(responseJson.familyMembers.length).to.be.eql(6);\r",
+							"    });\r",
+							"    pm.test(\"Family has paying user\", function() {\r",
+							"        pm.expect(responseJson.familyIsPremium).to.be.true;\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "21. Test leaves family",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Test has left family\", function() {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.success).to.be.true;\r",
+							"        pm.expect(responseJson.message).to.be.eql(\"Successfully left family\");\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "22. Assert test is not in family",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Test has no family\", function() {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.isInFamily).to.be.false;\r",
+							"        pm.expect(responseJson.familyIsPremium).to.be.false;\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "23.1 Leave family test1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test1",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "23.2 Leave family test2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test2",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "23.3 Leave family test3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test3",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "23.4 Leave family test4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test4",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "23.5 Leave family test5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test5",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/family/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"family",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "24. Delete subscription",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Subscription will be canceled at next renewal\", function() {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.success).to.be.true;\r",
+							"        const date = pm.collectionVariables.get(\"subRenew\");\r",
+							"        pm.expect(responseJson.cancelsAt).to.be.eql(date)\r",
+							"        const dateIso = new Date(date*1000).toISOString().slice(0,-5)+\"Z\";\r",
+							"        pm.expect(responseJson.message).to.be.eql(`Subscription Family will be canceled on the ${dateIso}`);\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/subscription/{{subscriptionId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"{{subscriptionId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "25. Assert subscription is canceled with cancelation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Subscription cancels\", function() {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.subscriptions[0].cancelsAtNextRenewal).to.be.true;\r",
+							"        pm.expect(responseJson.subscriptions[0].renewsAt).to.be.eql(pm.collectionVariables.get(\"subRenew\"));\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/subscription/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "26 cancel a cancellation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.response.to.have.jsonBody();",
+							"    pm.test(\"Creating subscriptions\", function() {",
+							"        const responseJson = pm.response.json();",
+							"        pm.expect(responseJson.success).to.be.true;",
+							"        pm.expect(responseJson.message).to.be.eql(\"Subscription Family will no longer be cancelled.\")",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/subscription/{{subscriptionId}}/continue",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"{{subscriptionId}}",
+						"continue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "27. Force delete subscription",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    pm.test(\"Subscription forced\", function() {\r",
+							"        const responseJson = pm.response.json();\r",
+							"        pm.expect(responseJson.success).to.be.true;\r",
+							"        pm.expect(responseJson.message).to.be.eql(\"Subscription Family has been canceled with immediate effect\");\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/subscription/{{subscriptionId}}/force",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"{{subscriptionId}}",
+						"force"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "28. Assert subscription is canceled",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"    const jsonResponse = pm.response.json();\r",
+							"    pm.test(\"No subscriptions\", function () {\r",
+							"        pm.expect(jsonResponse.subscriptions).to.be.length(0);\r",
+							"    });\r",
+							"    pm.test(\"Subscription is FREE\", function () {\r",
+							"        pm.expect(jsonResponse.effectiveTier).to.be.eql(\"FREE\");\r",
+							"        pm.expect(jsonResponse.premiumFromFamily).to.be.false;\r",
+							"    })\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/subscription/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"subscription",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "29. Assert cashflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.response.to.have.jsonBody();",
+							"    const jsonResponse = pm.response.json();",
+							"    pm.test(\"Correct value\", function () {",
+							"        pm.expect(jsonResponse[0].pendingIncome).to.be.eql(pm.collectionVariables.get(\"cashflow\")+95.25);",
+							"        //Could be edited to 175 because it is FAMILY, but in the program it does not charge a person the 50 kr extra before next month.",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/cashflow/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cashflow",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "30. Admin access denied",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 406\", function () {",
+							"    pm.response.to.have.status(406);",
+							"    pm.response.to.have.jsonBody();",
+							"    const jsonResponse = pm.response.json();",
+							"    pm.test(\"Access denied for user1\", function () {",
+							"        pm.expect(jsonResponse.error).to.be.true;",
+							"        pm.expect(jsonResponse.message).to.be.eql(\"Not acceptable: Only admins can access CashFlow\");",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-user-id",
+						"value": "test1",
+						"type": "text"
+					},
+					{
+						"key": "x-test-db",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/cashflow/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"cashflow",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "cardNumber",
+			"value": "\"4242424242424242\""
+		},
+		{
+			"key": "expireMonth",
+			"value": "\"5\""
+		},
+		{
+			"key": "expireYear",
+			"value": "\"2024\""
+		},
+		{
+			"key": "cvc",
+			"value": "\"123\""
+		},
+		{
+			"key": "method",
+			"value": "\"card\""
+		},
+		{
+			"key": "subscriptionPre",
+			"value": "\"PREMIUM\""
+		},
+		{
+			"key": "subscriptionFam",
+			"value": "\"FAMILY\""
+		},
+		{
+			"key": "expireYearInvalid",
+			"value": "\"2020\""
+		},
+		{
+			"key": "URL",
+			"value": "http://localhost:5000"
+		},
+		{
+			"key": "expireYearChanged",
+			"value": "\"2025\""
+		},
+		{
+			"key": "paymentId",
+			"value": ""
+		},
+		{
+			"key": "subscriptionId",
+			"value": "sub_1K57MzEuxKCgxj5tUefNGSiY"
+		},
+		{
+			"key": "invoiceId",
+			"value": ""
+		},
+		{
+			"key": "familyId",
+			"value": ""
+		},
+		{
+			"key": "subRenew",
+			"value": ""
+		},
+		{
+			"key": "tierToCancel\n",
+			"value": ""
+		},
+		{
+			"key": "cashflow",
+			"value": ""
+		},
+		{
+			"key": "URL",
+			"value": "http://fedora.stream.stud-srv.sdu.dk/api"
+		}
+	]
+}

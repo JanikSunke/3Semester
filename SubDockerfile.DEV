@@ -1,0 +1,14 @@
+FROM gitlab.sdu.dk:5050/semester-project-e2021/team-04/subscription/gradle:7.2.0-jdk17 AS builder
+COPY --chown=gradle:gradle java-backend ./
+RUN gradle build -x test
+
+
+FROM gitlab.sdu.dk:5050/semester-project-e2021/team-04/subscription/openjdk:17
+RUN mkdir app/
+WORKDIR /app/
+COPY --from=builder /home/gradle/build/libs/Sub*.jar /app/.
+COPY --from=builder /home/gradle/SubConfig.dev.json /app/.
+RUN mv SubConfig.dev.json config.json
+ENV PORT=5000
+EXPOSE 5000
+CMD [ "java","-jar","SubscriptionMain-1.0.0.jar" ]

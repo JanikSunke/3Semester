@@ -1,0 +1,7 @@
+{
+  "mail_sender": "subscription-team@alexandernorup.com",
+  "mail_password": "nielsfaurskov",
+  "smtp_host": "smtp.simply.com",
+  "api_host": "http://service04",
+  "admin_user_id" : "dbb2c974-66e2-4aca-8472-b81af79b044f"
+}

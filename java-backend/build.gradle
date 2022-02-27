@@ -1,0 +1,99 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'dk.sdu'
+version '1.0-SNAPSHOT'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java"]
+        }
+        resources {
+            srcDirs = ["src/main/java", "src/main/resources"]
+        }
+    }
+    // at compile time, put resources in same directories as classes
+    main.output.resourcesDir = main.java.classesDirectory
+}
+
+group 'dk.sdu.subscription'
+version '1.0-SNAPSHOT'
+
+tasks.withType(Jar).all {
+    duplicatesStrategy 'exclude'
+}
+
+processResources {
+    from("src/main/resources"){
+        include '*'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+//mainClassName = 'dk.sdu.subscription.presentation.Main'
+compileJava.options.encoding = 'UTF-8'
+
+    def jarPackage(artifactName, artifactVersion) {
+    if (artifactVersion == "" || artifactVersion == null) {
+        artifactVersion = "1.0.0"
+    }
+    return tasks.create("jar${artifactName}", Jar) {
+        baseName = artifactName
+        version = artifactVersion
+        String className = baseName.capitalize()
+
+        from(sourceSets.main.output) {
+            include "**"
+        }
+
+        from {
+            configurations.runtimeClasspath.collect {
+                it.isDirectory() ? it : zipTree(it)
+            }
+        }
+        from("src/main/resources"){
+            include '*'
+        }
+
+        manifest {
+            attributes "Implementation-Title": "$className",
+                    "Implementation-Version": "$version",
+                    "Main-Class": "dk.sdu.subscription.Fulfillment.$className"
+        }
+    }
+}
+
+artifacts {
+    archives jarPackage("MailServiceMain", ""), jarPackage("SubscriptionMain", "")
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation "com.sparkjava:spark-core:2.9.3"
+    // https://mvnrepository.com/artifact/com.stripe/stripe-java
+    implementation group: 'com.stripe', name: 'stripe-java', version: '20.85.0'
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation group: 'org.json', name: 'json', version: '20210307'
+    // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+    implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.2'
+    implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.5.5'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.10.jre7'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+    testImplementation 'junit:junit:4.13'
+    implementation 'org.slf4j:slf4j-api:2.0.0-alpha5'
+    implementation 'org.slf4j:slf4j-jdk14:2.0.0-alpha5'
+    implementation 'com.google.code.gson:gson:2.3'
+    implementation 'org.java-websocket:Java-WebSocket:1.5.2'
+
+}
+
+test {
+    useJUnitPlatform()
+}

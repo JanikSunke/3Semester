@@ -1,0 +1,1555 @@
+{
+	"id": "3938ba8a-1631-4663-80d3-a836d747be40",
+	"name": "TestSubscriptions",
+	"timestamp": "2021-12-15T13:13:13.030Z",
+	"collection_id": "18106810-aebdea5f-c4aa-4231-9091-140a3b0e3f30",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 77,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "8a16909b-05b0-456f-8a66-7821529f164b",
+			"name": "GET /subscription/",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "5a622b78-6bb7-4108-a69b-33085c29e3fb",
+			"name": "GET /invoice/",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/invoice/",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "6544de4d-0b86-4550-b92c-3ff021d64755",
+			"name": "GET /family/",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d1da6f53-09f9-4431-bf3f-523d2a4b0eac",
+			"name": "GET /payments/",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/payments/",
+			"time": 23,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "681307cd-c93c-48ff-b5e3-b3b47d28c08c",
+			"name": "1. Assert existing subscriptions",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/list",
+			"time": 508,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response has subscriptions": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Response has subscriptions": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				508
+			],
+			"allTests": [
+				{
+					"Response has subscriptions": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "409d3af8-d4b9-4eab-a027-d321d00901fa",
+			"name": "2. Delete all payments for user",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/payments/all",
+			"time": 1608,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"User has no payment methods": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"User has no payment methods": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1608
+			],
+			"allTests": [
+				{
+					"User has no payment methods": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "f7128a21-51c2-4415-875f-6203489b8fd9",
+			"name": "3. Cashflow",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/cashflow/",
+			"time": 10444,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Expected output": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Expected output": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10444
+			],
+			"allTests": [
+				{
+					"Expected output": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d9be4f31-add0-41d8-8221-abc04aebc1ac",
+			"name": "4. Create subscription with error",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/create",
+			"time": 1300,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Cant create subscription without payment source": true,
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Cant create subscription without payment source": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1300
+			],
+			"allTests": [
+				{
+					"Cant create subscription without payment source": true,
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "0f30f8a3-e652-47d1-b3fe-11ac6984aaf9",
+			"name": "5. get payments methods",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/payments/get",
+			"time": 475,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"No payment methods": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"No payment methods": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				475
+			],
+			"allTests": [
+				{
+					"No payment methods": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "43045562-8870-4861-a613-69c940567a19",
+			"name": "6. Create payment method for test",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/payments/",
+			"time": 2303,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Create payment": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Create payment": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2303
+			],
+			"allTests": [
+				{
+					"Create payment": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "bd71cded-2bca-45af-9179-4c7ccbce40d6",
+			"name": "7. Create paymentMethod for test with invalid card",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/payments/",
+			"time": 444,
+			"responseCode": {
+				"code": 406,
+				"name": "Not Acceptable"
+			},
+			"tests": {
+				"Card is invalid": true,
+				"Status code is 406": true
+			},
+			"testPassFailCounts": {
+				"Card is invalid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 406": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				444
+			],
+			"allTests": [
+				{
+					"Card is invalid": true,
+					"Status code is 406": true
+				}
+			]
+		},
+		{
+			"id": "4eff9c75-4978-45a5-bee6-0ffd17151a14",
+			"name": "8. Change payment method",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/payments/edit/pm_1K6xISEuxKCgxj5tl0nq2vaF",
+			"time": 3513,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Change payment Method": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Change payment Method": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3513
+			],
+			"allTests": [
+				{
+					"Change payment Method": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "38cb6e81-eb6e-4803-a7de-c6913dc8a7a4",
+			"name": "9. Assert user payment is correct",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/payments/get",
+			"time": 484,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Check CardValues": true,
+				"Only one paymentMethod": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Check CardValues": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Only one paymentMethod": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				484
+			],
+			"allTests": [
+				{
+					"Check CardValues": true,
+					"Only one paymentMethod": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7097838b-18bf-451b-b753-5fd4f15c0f25",
+			"name": "10. Create subscription for test",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/create",
+			"time": 2681,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Creating subscription": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Creating subscription": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2681
+			],
+			"allTests": [
+				{
+					"Creating subscription": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ce3b5ae8-e34e-4a59-877d-286a67264603",
+			"name": "11. get all invoices",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/invoice/list",
+			"time": 2896,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Invoice is created": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Invoice is created": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2896
+			],
+			"allTests": [
+				{
+					"Invoice is created": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "11765d26-6dcc-4df2-9cfa-55cf876dcc37",
+			"name": "12. assert latest invoice pdf",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/invoice/85/view?user=test",
+			"time": 435,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Invoice is readable(pdf)": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Invoice is readable(pdf)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				435
+			],
+			"allTests": [
+				{
+					"Invoice is readable(pdf)": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "6cc25dcb-9b96-494a-bb49-72f5cc959137",
+			"name": "13. assert latest invoice data",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/invoice/85",
+			"time": 375,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Invoice has correct data": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Invoice has correct data": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				375
+			],
+			"allTests": [
+				{
+					"Invoice has correct data": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3316ae9a-fefc-4ee1-b3b0-2abedc9132ee",
+			"name": "14. Change subscription for test (Familiy)",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/sub_1K6xIZEuxKCgxj5tqVnHnwzj",
+			"time": 1217,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Updating subscription": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Updating subscription": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1217
+			],
+			"allTests": [
+				{
+					"Updating subscription": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "67b8eb82-b9ab-4b4f-b12c-022b8a82125e",
+			"name": "15. Assert subscription is correct",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/user",
+			"time": 1945,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Only one Subscription": true,
+				"Subscription is correct": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Only one Subscription": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Subscription is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1945
+			],
+			"allTests": [
+				{
+					"Only one Subscription": true,
+					"Subscription is correct": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "94d3100e-0576-47be-8e45-f62e84c367d1",
+			"name": "16. Show subscription info",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/sub_1K6xIZEuxKCgxj5tqVnHnwzj",
+			"time": 457,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Subscription is correct": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Subscription is correct": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				457
+			],
+			"allTests": [
+				{
+					"Subscription is correct": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "05f9abfc-b6dc-4d67-8a2e-28461366868c",
+			"name": "17. Create and assert already subbed",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/create",
+			"time": 82,
+			"responseCode": {
+				"code": 406,
+				"name": "Not Acceptable"
+			},
+			"tests": {
+				"Creating subscriptions": true,
+				"Status code is 406": true
+			},
+			"testPassFailCounts": {
+				"Creating subscriptions": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 406": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				82
+			],
+			"allTests": [
+				{
+					"Creating subscriptions": true,
+					"Status code is 406": true
+				}
+			]
+		},
+		{
+			"id": "b12147c0-96b6-4bf9-8223-41c53009a029",
+			"name": "18. Create a family for user",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/",
+			"time": 100,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Create family": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Create family": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				100
+			],
+			"allTests": [
+				{
+					"Create family": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "454dbc5b-38f1-4a94-8f64-9b55b3d933aa",
+			"name": "18.1 Join family test1",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/VOLOWWYK",
+			"time": 117,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				117
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "839d77cb-1114-4cbf-bfe4-62342ce13b53",
+			"name": "18.2 Join family test2",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/VOLOWWYK",
+			"time": 117,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				117
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "750a4649-7ebb-4c21-8cfe-36cd2b7d1a64",
+			"name": "18.3 Join family test3",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/VOLOWWYK",
+			"time": 115,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				115
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "0ca113af-eb4e-46a6-922e-52f1e85408e3",
+			"name": "18.4 Join family test4",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/VOLOWWYK",
+			"time": 128,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				128
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ef047294-499c-4eb6-8fa6-9629c2fdbc2c",
+			"name": "18.5 Join family test5",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/VOLOWWYK",
+			"time": 116,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				116
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "b4103bf5-3ac9-4d74-85f3-3b79583b65a6",
+			"name": "19. Join Family (full)",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/VOLOWWYK",
+			"time": 99,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Family is full": true,
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Family is full": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				99
+			],
+			"allTests": [
+				{
+					"Family is full": true,
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "56f655d1-ce44-4d6f-86ff-f50acf36bd6a",
+			"name": "20. Check user and user1 same family",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/user",
+			"time": 102,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Family has test and test1": true,
+				"Family has 6 users": true,
+				"Family has paying user": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Family has test and test1": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Family has 6 users": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Family has paying user": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				102
+			],
+			"allTests": [
+				{
+					"Family has test and test1": true,
+					"Family has 6 users": true,
+					"Family has paying user": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "60e002a0-7586-4b8e-937d-b8b4ef6605b5",
+			"name": "21. Test leaves family",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/",
+			"time": 85,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Test has left family": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Test has left family": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				85
+			],
+			"allTests": [
+				{
+					"Test has left family": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "f15c8a45-0afc-4918-8fa8-93afca2bd4e1",
+			"name": "22. Assert test is not in family",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/user",
+			"time": 86,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Test has no family": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Test has no family": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				86
+			],
+			"allTests": [
+				{
+					"Test has no family": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "77b1a65e-2f42-47b6-ba45-377b777cfc81",
+			"name": "23.1 Leave family test1",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/",
+			"time": 83,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				83
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d9bdd513-4365-48fe-95d4-40bc70934e3d",
+			"name": "23.2 Leave family test2",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/",
+			"time": 85,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				85
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "b8cd94ab-b5f5-47ca-ad79-43541cfc1efe",
+			"name": "23.3 Leave family test3",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/",
+			"time": 81,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				81
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3cb7ed32-1057-419a-a2ab-f0217942ae98",
+			"name": "23.4 Leave family test4",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/",
+			"time": 82,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				82
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "129fabb1-334c-4535-8c75-0622314faad2",
+			"name": "23.5 Leave family test5",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/family/",
+			"time": 80,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				80
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "eaf8ae8a-bbd5-4358-9953-78ee8ed40b72",
+			"name": "24. Delete subscription",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/sub_1K6xIZEuxKCgxj5tqVnHnwzj",
+			"time": 675,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Subscription will be canceled at next renewal": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Subscription will be canceled at next renewal": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				675
+			],
+			"allTests": [
+				{
+					"Subscription will be canceled at next renewal": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7500988e-a7a2-4a21-9776-e587e2d7fd0a",
+			"name": "25. Assert subscription is canceled with cancelation",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/user",
+			"time": 1543,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Subscription cancels": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Subscription cancels": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1543
+			],
+			"allTests": [
+				{
+					"Subscription cancels": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "8e06df3c-cb89-43ea-a46b-6fe2c7b644ad",
+			"name": "26 cancel a cancellation",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/sub_1K6xIZEuxKCgxj5tqVnHnwzj/continue",
+			"time": 880,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Creating subscriptions": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Creating subscriptions": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				880
+			],
+			"allTests": [
+				{
+					"Creating subscriptions": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "9d9919be-8261-4ffa-ba1d-c986206c3e81",
+			"name": "27. Force delete subscription",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/sub_1K6xIZEuxKCgxj5tqVnHnwzj/force",
+			"time": 950,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Subscription forced": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Subscription forced": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				950
+			],
+			"allTests": [
+				{
+					"Subscription forced": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3edd056a-2a68-4b09-bc7f-b1d66a3959b2",
+			"name": "28. Assert subscription is canceled",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/subscription/user",
+			"time": 1535,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"No subscriptions": true,
+				"Subscription is FREE": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"No subscriptions": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Subscription is FREE": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1535
+			],
+			"allTests": [
+				{
+					"No subscriptions": true,
+					"Subscription is FREE": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "62d0f9b8-beb1-4ec8-946e-320ddee3017d",
+			"name": "29. Assert cashflow",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/cashflow/",
+			"time": 2162,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Correct value": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Correct value": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2162
+			],
+			"allTests": [
+				{
+					"Correct value": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "66a1edcd-6b0b-4a6c-99ed-195cda57d168",
+			"name": "30. Admin access denied",
+			"url": "http://fedora.stream.stud-srv.sdu.dk/api/cashflow/",
+			"time": 47,
+			"responseCode": {
+				"code": 406,
+				"name": "Not Acceptable"
+			},
+			"tests": {
+				"Access denied for user1": true,
+				"Status code is 406": true
+			},
+			"testPassFailCounts": {
+				"Access denied for user1": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 406": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
+			],
+			"allTests": [
+				{
+					"Access denied for user1": true,
+					"Status code is 406": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 40509,
+	"collection": {
+		"requests": [
+			{
+				"id": "8a16909b-05b0-456f-8a66-7821529f164b",
+				"method": "GET"
+			},
+			{
+				"id": "5a622b78-6bb7-4108-a69b-33085c29e3fb",
+				"method": "GET"
+			},
+			{
+				"id": "6544de4d-0b86-4550-b92c-3ff021d64755",
+				"method": "GET"
+			},
+			{
+				"id": "d1da6f53-09f9-4431-bf3f-523d2a4b0eac",
+				"method": "GET"
+			},
+			{
+				"id": "681307cd-c93c-48ff-b5e3-b3b47d28c08c",
+				"method": "GET"
+			},
+			{
+				"id": "409d3af8-d4b9-4eab-a027-d321d00901fa",
+				"method": "DELETE"
+			},
+			{
+				"id": "f7128a21-51c2-4415-875f-6203489b8fd9",
+				"method": "GET"
+			},
+			{
+				"id": "d9be4f31-add0-41d8-8221-abc04aebc1ac",
+				"method": "POST"
+			},
+			{
+				"id": "0f30f8a3-e652-47d1-b3fe-11ac6984aaf9",
+				"method": "GET"
+			},
+			{
+				"id": "43045562-8870-4861-a613-69c940567a19",
+				"method": "POST"
+			},
+			{
+				"id": "bd71cded-2bca-45af-9179-4c7ccbce40d6",
+				"method": "POST"
+			},
+			{
+				"id": "4eff9c75-4978-45a5-bee6-0ffd17151a14",
+				"method": "PATCH"
+			},
+			{
+				"id": "38cb6e81-eb6e-4803-a7de-c6913dc8a7a4",
+				"method": "GET"
+			},
+			{
+				"id": "7097838b-18bf-451b-b753-5fd4f15c0f25",
+				"method": "POST"
+			},
+			{
+				"id": "ce3b5ae8-e34e-4a59-877d-286a67264603",
+				"method": "GET"
+			},
+			{
+				"id": "11765d26-6dcc-4df2-9cfa-55cf876dcc37",
+				"method": "GET"
+			},
+			{
+				"id": "6cc25dcb-9b96-494a-bb49-72f5cc959137",
+				"method": "GET"
+			},
+			{
+				"id": "3316ae9a-fefc-4ee1-b3b0-2abedc9132ee",
+				"method": "PATCH"
+			},
+			{
+				"id": "67b8eb82-b9ab-4b4f-b12c-022b8a82125e",
+				"method": "GET"
+			},
+			{
+				"id": "94d3100e-0576-47be-8e45-f62e84c367d1",
+				"method": "GET"
+			},
+			{
+				"id": "05f9abfc-b6dc-4d67-8a2e-28461366868c",
+				"method": "POST"
+			},
+			{
+				"id": "b12147c0-96b6-4bf9-8223-41c53009a029",
+				"method": "POST"
+			},
+			{
+				"id": "454dbc5b-38f1-4a94-8f64-9b55b3d933aa",
+				"method": "POST"
+			},
+			{
+				"id": "839d77cb-1114-4cbf-bfe4-62342ce13b53",
+				"method": "POST"
+			},
+			{
+				"id": "750a4649-7ebb-4c21-8cfe-36cd2b7d1a64",
+				"method": "POST"
+			},
+			{
+				"id": "0ca113af-eb4e-46a6-922e-52f1e85408e3",
+				"method": "POST"
+			},
+			{
+				"id": "ef047294-499c-4eb6-8fa6-9629c2fdbc2c",
+				"method": "POST"
+			},
+			{
+				"id": "b4103bf5-3ac9-4d74-85f3-3b79583b65a6",
+				"method": "POST"
+			},
+			{
+				"id": "56f655d1-ce44-4d6f-86ff-f50acf36bd6a",
+				"method": "GET"
+			},
+			{
+				"id": "60e002a0-7586-4b8e-937d-b8b4ef6605b5",
+				"method": "DELETE"
+			},
+			{
+				"id": "f15c8a45-0afc-4918-8fa8-93afca2bd4e1",
+				"method": "GET"
+			},
+			{
+				"id": "77b1a65e-2f42-47b6-ba45-377b777cfc81",
+				"method": "DELETE"
+			},
+			{
+				"id": "d9bdd513-4365-48fe-95d4-40bc70934e3d",
+				"method": "DELETE"
+			},
+			{
+				"id": "b8cd94ab-b5f5-47ca-ad79-43541cfc1efe",
+				"method": "DELETE"
+			},
+			{
+				"id": "3cb7ed32-1057-419a-a2ab-f0217942ae98",
+				"method": "DELETE"
+			},
+			{
+				"id": "129fabb1-334c-4535-8c75-0622314faad2",
+				"method": "DELETE"
+			},
+			{
+				"id": "eaf8ae8a-bbd5-4358-9953-78ee8ed40b72",
+				"method": "DELETE"
+			},
+			{
+				"id": "7500988e-a7a2-4a21-9776-e587e2d7fd0a",
+				"method": "GET"
+			},
+			{
+				"id": "8e06df3c-cb89-43ea-a46b-6fe2c7b644ad",
+				"method": "POST"
+			},
+			{
+				"id": "9d9919be-8261-4ffa-ba1d-c986206c3e81",
+				"method": "DELETE"
+			},
+			{
+				"id": "3edd056a-2a68-4b09-bc7f-b1d66a3959b2",
+				"method": "GET"
+			},
+			{
+				"id": "62d0f9b8-beb1-4ec8-946e-320ddee3017d",
+				"method": "GET"
+			},
+			{
+				"id": "66a1edcd-6b0b-4a6c-99ed-195cda57d168",
+				"method": "GET"
+			}
+		]
+	}
+}

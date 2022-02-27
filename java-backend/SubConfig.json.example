@@ -1,0 +1,14 @@
+{
+  "stripe_secret_key": "KEY",
+  "smtp_host": "SMTP_HOST",
+  "database_url": "HOST_URL",
+  "database_port": "HOST_PORT",
+  "database_name": "NAME",
+  "database_username": "USERNAME",
+  "database_password": "PASSWORD",
+  "mail_host": "HOST",
+  "mail_port" : "PORT",
+  "websocket_host" : "HOST",
+  "websocket_port" : "PORT",
+  "admin_user_id" : "UUID"
+}

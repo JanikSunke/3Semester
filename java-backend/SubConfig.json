@@ -1,0 +1,16 @@
+{
+  "stripe_secret_key": "sk_test_51JoNcpEuxKCgxj5t7EkKho4w6aNJlh0ZHHuh8Q56I8DFtZsTH6DezWSL8UnX8ecE52fYudBgrKzlsM4lYfanGHAh00UkbmXiNX",
+  "database_url": "hosting.alexandernorup.com",
+  "database_port": "5432",
+  "database_name": "subscription",
+  "database_username": "subscription",
+  "database_password": "nielsfaurskov",
+  "mail_host": "http://t04-mailservice",
+  "websocket_host" : "hosting.alexandernorup.com",
+  "websocket_port" : "4001",
+  "websocket_topic" : "subscription",
+  "user_port": "80",
+  "user_host": "service01",
+  "mock_host": "drive.alexandernorup.com/semesterprojekt",
+  "admin_user_id" : "dbb2c974-66e2-4aca-8472-b81af79b044f"
+}

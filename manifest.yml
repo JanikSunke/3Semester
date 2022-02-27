@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t04-subscription
+  labels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: t04-subscription
+  template:
+    metadata:
+      labels:
+        app: t04-subscription
+    spec:
+      containers:
+      - name: t04-subscription
+        image: gitlab.sdu.dk:5050/semester-project-e2021/team-04/subscription:subscription
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 0m
+            memory: 150Mi
+          requests:
+            cpu: 0m
+            memory: 80Mi
+      imagePullSecrets:
+      - name: sdugitlab
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: t04-mailservice
+  labels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: t04-mailservice
+  template:
+    metadata:
+      labels:
+        app: t04-mailservice
+    spec:
+      containers:
+        - name: t04-mailservice
+          image: gitlab.sdu.dk:5050/semester-project-e2021/team-04/subscription:mail
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5001
+          resources:
+            limits:
+              cpu: 0m
+              memory: 150Mi
+            requests:
+              cpu: 0m
+              memory: 80Mi
+      imagePullSecrets:
+        - name: sdugitlab
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service04
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  selector:
+    app: t04-subscription
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: t04-mailservice
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5001
+  selector:
+    app: t04-mailservice
